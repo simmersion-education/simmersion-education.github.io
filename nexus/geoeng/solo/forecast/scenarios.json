@@ -1,0 +1,35 @@
+[
+  {
+    "scenario": "Moisture Front Approaching",
+    "description": "A moisture front is advancing from the south. Humidity levels are rising and cloud bases are lowering.",
+    "model": {
+      "wind": "12–15 knots",
+      "rain": "Light → Moderate",
+      "visibility": "4–6 km",
+      "temperature": "14°C",
+      "sea": "Slight"
+    }
+  },
+  {
+    "scenario": "Rapid Cooling Overnight",
+    "description": "Clear skies and calm winds are expected overnight, increasing the likelihood of rapid surface cooling.",
+    "model": {
+      "wind": "3–5 knots",
+      "rain": "None",
+      "visibility": "10 km+",
+      "temperature": "6°C dropping to 2°C",
+      "sea": "Calm"
+    }
+  },
+  {
+    "scenario": "Low Pressure Deepening",
+    "description": "A deepening low pressure system is moving east, bringing unstable air and increasing wind speeds.",
+    "model": {
+      "wind": "20–25 knots",
+      "rain": "Moderate → Heavy",
+      "visibility": "2–4 km",
+      "temperature": "11°C",
+      "sea": "Moderate"
+    }
+  }
+]

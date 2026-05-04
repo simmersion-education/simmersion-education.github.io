@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Forecast Room</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="container">
+
+  <div id="top-panels">
+    <div id="scenario-panel">
+      <h2 id="scenario-title"></h2>
+      <p id="scenario-description"></p>
+    </div>
+
+    <div id="model-panel">
+      <h2>Model Output</h2>
+      <pre id="model-output"></pre>
+    </div>
+  </div>
+
+  <div id="bottom-panel">
+    <p id="archivist-text">
+      Cadet, the Nexus Atmospheric Model has generated this output.<br>
+      When you are ready, please provide your forecast. Target duration: 60–90 seconds.
+    </p>
+
+    <div id="controls">
+      <button id="start-btn">Begin Forecast</button>
+      <button id="stop-btn" style="display:none;">Stop Recording</button>
+      <button id="play-btn" style="display:none;">Play Back</button>
+      <button id="submit-btn" style="display:none;">Submit Forecast</button>
+      <button id="retry-btn" style="display:none;">Retry</button>
+    </div>
+
+    <div id="timer"></div>
+  </div>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
