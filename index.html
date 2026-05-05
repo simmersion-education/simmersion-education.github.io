@@ -7,20 +7,118 @@
     body {
       font-family: Arial, sans-serif;
       padding: 40px;
-      max-width: 700px;
+      max-width: 800px;
       margin: auto;
-      line-height: 1.6;
+      line-height: 1.7;
+      color: #222;
     }
-    a { color: #0055aa; }
+    h1, h2, h3 {
+      font-weight: 600;
+      color: #111;
+    }
+    .hero {
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+    .section {
+      margin-top: 40px;
+    }
+    a {
+      color: #0055aa;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .module-list li {
+      margin-bottom: 8px;
+    }
+    footer {
+      margin-top: 60px;
+      padding-top: 20px;
+      border-top: 1px solid #ccc;
+      font-size: 0.9rem;
+      color: #555;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
-  <h1>Welcome to Simmersion Education</h1>
-  <p>This site is under active development.</p>
 
-  <h2>Modules</h2>
-  <ul>
-    <li><a href="/nexus/geoeng/solo/forecast/">Solo GeoEng Forecast Room</a></li>
-  </ul>
+  <h1>Simmersion Education</h1>
+
+  <p class="hero">
+    Simmersion develops the human skills that matter most in an AI‑shaped world —
+    the ones schools struggle to teach and AI can’t replace.
+  </p>
+
+  <p>
+    Through short, structured learning missions, learners practise communication,
+    reasoning, improvisation, collaboration, and real‑time decision‑making.
+    Simmersion prepares young people for the world they’re growing into —
+    not the world their exams were designed for.
+  </p>
+
+  <div class="section">
+    <h2>What is Simmersion?</h2>
+    <p>
+      Simmersion is a growing collection of guided learning environments.
+      Each activity gives learners clear tasks, immediate feedback, and a sense of progression.
+      It’s designed for anyone who learns best by <em>doing</em> — including those who benefit
+      from structure, clarity, and low‑pressure practice.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>Current Modules (Early Development)</h2>
+    <ul class="module-list">
+      <li>
+        <a href="/nexus/geoeng/solo/forecast/">
+          Nexus: GeoEngineering Forecast Room (Solo)
+        </a>
+        — record forecasts, listen back, and receive structured feedback.
+      </li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>For Tutors</h2>
+    <p>
+      Simmersion provides structured, low‑pressure environments that help learners practise
+      communication, reasoning, sequencing, and decision‑making. It can be used alongside
+      tutoring sessions to build confidence and reinforce real‑world skills.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>For Parents</h2>
+    <p>
+      Simmersion offers safe, guided activities that help young people develop the human skills
+      they need for life: communication, adaptability, collaboration, and clear thinking.
+      Everything is designed to be simple, transparent, and supportive.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>For Learners</h2>
+    <p>
+      Simmersion gives you a place to practise real‑world skills in a calm, structured way.
+      You can explore scenarios, try things out, make mistakes safely, and build confidence
+      step by step.
+    </p>
+  </div>
+
+  <p class="note">
+    This site is in active development. New modules and learning pathways are added regularly.
+  </p>
+
+  <footer>
+    Contact: <a href="mailto:ed@edventures.uk">ed@edventures.uk</a>  
+    <!-- or use: <a href="mailto:info@edventures.uk">info@edventures.uk</a> -->
+    <br>
+    © Simmersion Education
+  </footer>
+
 </body>
 </html>
