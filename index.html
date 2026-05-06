@@ -35,7 +35,6 @@
       position: relative;
     }
 
-
     .logo-text .dot {
       font-size: 1.8em;
       line-height: 0;
@@ -43,16 +42,20 @@
       position: relative;
       top: -0.18em;
 
-      /* Split dot */
+      /* Reset EVERYTHING inherited from .logo-text */
+      background: none;
+      -webkit-background-clip: border-box;
+      background-clip: border-box;
+      -webkit-text-fill-color: initial;
+      color: initial;
+
+      /* Now apply the split-dot cleanly */
       background: linear-gradient(to right, white 50%, black 50%);
       -webkit-background-clip: text;
       background-clip: text;
-
-      /* Break inheritance from parent */
       color: transparent;
       -webkit-text-fill-color: transparent;
     }
-
 
 
     .hero {
