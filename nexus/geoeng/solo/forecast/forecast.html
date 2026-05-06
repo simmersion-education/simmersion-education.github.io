@@ -39,36 +39,37 @@
 
     /* Approximate positions — adjust as needed */
     #obs-room {
-      top: 120px;
-      left: 80px;
-      width: 200px;
-      height: 150px;
+      top: 12%;
+      left: 8%;
+      width: 20%;
+      height: 15%;
     }
+    
 
     #holo-room {
-      top: 350px;
-      left: 80px;
-      width: 200px;
-      height: 150px;
+      top: 35%;
+      left: 8%;
+      width: 20%;
+      height: 15%;
     }
 
     #resource-room {
-      top: 580px;
-      left: 80px;
-      width: 200px;
-      height: 150px;
+      top: 58%;
+      left: 8%;
+      width: 20%;
+      height: 15%;
     }
 
     /* Floating forecast panel */
     #panel {
       position: absolute;
-      top: 20px;
-      left: 20px;
+      top: 2%;
+      left: 2%;
       background: rgba(255,255,255,0.92);
-      width: 320px;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.4);
+      width: 32%;
+      padding: 2%;
+      border-radius: 1%;
+      box-shadow: 0 0 1% rgba(0,0,0,0.4);
     }
 
     #result {
@@ -77,13 +78,21 @@
       background: #f0f0f0;
       border-radius: 6px;
     }
+    #map-wrapper {
+      position: relative;
+      width: 100%;
+      height: auto;
+    }
+
   </style>
 </head>
 
 <body>
 
   <!-- Scrollable map -->
+
   <div id="map-container">
+  <div id="map-wrapper">
     <img src="obs_holodeck.png" id="map" alt="Observation Deck Map">
 
     <!-- Clickable rooms -->
@@ -91,6 +100,9 @@
     <div id="holo-room" class="room"></div>
     <div id="resource-room" class="room"></div>
   </div>
+  </div>
+
+
 
   <!-- Forecast panel -->
   <div id="panel">
