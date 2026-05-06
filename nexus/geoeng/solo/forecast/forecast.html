@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Forecast Module</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url('obs_holodeck.png');
+      background-size: cover;
+      background-position: center;
+      font-family: sans-serif;
+    }
+
+    #panel {
+      background: rgba(255,255,255,0.9);
+      width: 320px;
+      padding: 20px;
+      margin: 40px;
+      border-radius: 8px;
+    }
+
+    #result {
+      margin-top: 20px;
+      padding: 10px;
+      background: #f0f0f0;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="panel">
+    <h2>Observation Deck</h2>
+
+    <p id="scenario">
+      A low‑pressure system is approaching from the west.
+      What is your forecast for rainfall probability in the next 6 hours?
+    </p>
+
+    <label>Forecast (0–100):</label>
+    <input type="range" id="forecast" min="0" max="100" value="50">
+
+    <button id="lock">Lock Forecast</button>
+    <button id="reveal" style="display:none;">Reveal Outcome</button>
+
+    <div id="result" style="display:none;">
+      <p id="yourForecast"></p>
+      <p id="actualOutcome"></p>
+      <p id="feedback"></p>
+    </div>
+  </div>
+
+  <script>
+    let lockedValue = null;
+
+    document.getElementById("lock").onclick = function() {
+      lockedValue = document.getElementById("forecast").value;
+      document.getElementById("forecast").disabled = true;
+      document.getElementById("lock").disabled = true;
+      document.getElementById("reveal").style.display = "block";
+    };
+
+    document.getElementById("reveal").onclick = function() {
+      const actual = 65; // temporary hard-coded outcome
+
+      document.getElementById("yourForecast").innerText =
+        "Your forecast: " + lockedValue;
+
+      document.getElementById("actualOutcome").innerText =
+        "Actual outcome: " + actual;
+
+      document.getElementById("feedback").innerText =
+        "Difference: " + Math.abs(actual - lockedValue);
+
+      document.getElementById("result").style.display = "block";
+    };
+  </script>
+
+</body>
+</html>
