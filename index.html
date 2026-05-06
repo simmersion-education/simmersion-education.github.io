@@ -35,7 +35,7 @@
       position: relative;
     }
 
-    /* Enlarged + lifted dot, but with its OWN colour so it doesn't vanish */
+
     .logo-text .dot {
       font-size: 1.8em;
       line-height: 0;
@@ -43,12 +43,11 @@
       position: relative;
       top: -0.18em;
 
-      /* NEW: give the dot its own colour so it stays visible */
-      color: black;
-      -webkit-background-clip: unset;
-      background: none;
+      /* Half white, half black dot */
+      background: linear-gradient(to right, white 50%, black 50%);
+      -webkit-background-clip: text;
+      color: transparent;
     }
-
 
 
     .hero {
