@@ -43,11 +43,16 @@
       position: relative;
       top: -0.18em;
 
-      /* Half white, half black dot */
+      /* Split dot */
       background: linear-gradient(to right, white 50%, black 50%);
       -webkit-background-clip: text;
+      background-clip: text;
+
+      /* Break inheritance from parent */
       color: transparent;
+      -webkit-text-fill-color: transparent;
     }
+
 
 
     .hero {
