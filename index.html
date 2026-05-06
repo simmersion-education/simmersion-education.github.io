@@ -36,27 +36,18 @@
     }
 
     .logo-text .dot {
-      font-size: 1.8em;
-      line-height: 0;
+      width: 0.55em;
+      height: 0.55em;
       display: inline-block;
+      border-radius: 50%;
       position: relative;
-      top: -0.18em;
 
-      /* Break ALL parent text masking */
-      -webkit-background-clip: text !important;
-      background-clip: text !important;
-      -webkit-text-fill-color: transparent !important;
+      /* Lower it slightly */
+      top: 0.05em;
 
-      /* Force the dot to ignore the parent gradient */
-      background-image: linear-gradient(to right, white 50%, black 50%) !important;
-      background-size: 100% 100% !important;
-      background-repeat: no-repeat !important;
-
-      /* This is the key: remove parent clipping behaviour */
-      mix-blend-mode: normal !important;
+      /* Split circle */
+      background: linear-gradient(to right, white 50%, black 50%);
     }
-
-
 
     .hero {
       font-size: 1.4rem;
@@ -91,7 +82,7 @@
 
   <div class="logo-block">
   <span class="logo-text">
-    simmersion<span class="dot">.</span>education
+    simmersion<span class="dot"></span>education
   </span>
   </div>
 
