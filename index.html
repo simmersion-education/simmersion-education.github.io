@@ -42,20 +42,20 @@
       position: relative;
       top: -0.18em;
 
-      /* Reset EVERYTHING inherited from .logo-text */
-      background: none;
-      -webkit-background-clip: border-box;
-      background-clip: border-box;
-      -webkit-text-fill-color: initial;
-      color: initial;
+      /* Break ALL parent text masking */
+      -webkit-background-clip: text !important;
+      background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
 
-      /* Now apply the split-dot cleanly */
-      background: linear-gradient(to right, white 50%, black 50%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      -webkit-text-fill-color: transparent;
+      /* Force the dot to ignore the parent gradient */
+      background-image: linear-gradient(to right, white 50%, black 50%) !important;
+      background-size: 100% 100% !important;
+      background-repeat: no-repeat !important;
+
+      /* This is the key: remove parent clipping behaviour */
+      mix-blend-mode: normal !important;
     }
+
 
 
     .hero {
