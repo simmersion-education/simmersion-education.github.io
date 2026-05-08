@@ -32,6 +32,7 @@
       background-image: url("obs_holodeck.png");
       background-size: contain;
       background-repeat: no-repeat;
+      z-index: 10;
     }
 
     /* Clickable rooms */
@@ -41,9 +42,8 @@
       background: rgba(255,0,0,0.22); /* debug mode */
     }
 
-    /* === ROOM COORDINATES (based on 1750×4150) === */
+    /* === ROOM COORDINATES === */
 
-    /* Observation Deck */
     #obs-room {
       top: 4.3%;
       left: 10.3%;
@@ -51,7 +51,6 @@
       height: 19.8%;
     }
 
-    /* GeoEng Room */
     #geoeng-room {
       top: 24.8%;
       left: 10.3%;
@@ -59,7 +58,6 @@
       height: 10.8%;
     }
 
-    /* Console Room */
     #console-room {
       top: 30.8%;
       left: 10.3%;
@@ -67,7 +65,6 @@
       height: 10.5%;
     }
 
-    /* Advanced Holographics */
     #holo-room {
       top: 36.1%;
       left: 10.3%;
@@ -75,7 +72,6 @@
       height: 16.9%;
     }
 
-    /* Negotiation Space */
     #negotiation-room {
       top: 48.8%;
       left: 10.3%;
@@ -83,7 +79,6 @@
       height: 10.5%;
     }
 
-    /* Resource Room */
     #resource-room {
       top: 61.4%;
       left: 10.3%;
@@ -91,7 +86,6 @@
       height: 16.9%;
     }
 
-    /* BioEng */
     #bioeng-room {
       top: 74.8%;
       left: 10.3%;
@@ -99,7 +93,6 @@
       height: 12.5%;
     }
 
-    /* Sci Ops Bay */
     #sciops-room {
       top: 87.0%;
       left: 10.3%;
@@ -107,7 +100,6 @@
       height: 11.5%;
     }
 
-    /* Elevator */
     #elevator-room {
       top: 22.0%;
       left: 44%;
@@ -115,29 +107,68 @@
       height: 4.5%;
     }
 
-    /* Floating forecast panel */
+    /* Collapsible forecast panel */
     #panel {
       position: absolute;
       top: 2%;
       left: 2%;
+      width: 220px; /* collapsed */
+      padding: 12px;
       background: rgba(255,255,255,0.92);
-      width: 32%;
-      padding: 2%;
-      border-radius: 1%;
-      box-shadow: 0 0 1% rgba(0,0,0,0.4);
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.35);
+      z-index: 50;
+      transition: all 0.35s ease;
+      overflow: hidden;
+      cursor: pointer;
+      transform: translateX(-10px);
+      opacity: 0.95;
     }
 
-    #result {
-      margin-top: 20px;
-      padding: 10px;
-      background: #f0f0f0;
-      border-radius: 6px;
+    /* Expanded state */
+    #panel.expanded {
+      width: 380px;
+      max-height: 80vh;
+      cursor: default;
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    /* Hide content when collapsed */
+    #panel .panel-content {
+      opacity: 0;
+      max-height: 0;
+      transition: opacity 0.25s ease, max-height 0.25s ease;
+    }
+
+    /* Show content when expanded */
+    #panel.expanded .panel-content {
+      opacity: 1;
+      max-height: 1000px;
+    }
+
+    /* Close button */
+    #close-panel {
+      display: none;
+      margin-bottom: 10px;
+      background: #ddd;
+      border: none;
+      padding: 6px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    #panel.expanded #close-panel {
+      display: inline-block;
     }
 
   </style>
 </head>
 
 <body>
+
+  <!-- Sound cue -->
+  <audio id="panel-sound" src="panel-open.mp3" preload="auto"></audio>
 
   <!-- Scrollable map -->
   <div id="map-container">
@@ -159,62 +190,39 @@
 
   <!-- Forecast panel -->
   <div id="panel">
-    <h2>Observation Deck</h2>
+    <div class="panel-header">
+      <strong>Observation Deck</strong>
+    </div>
 
-    <p id="scenario">
-      A low‑pressure system is approaching from the west.  
-      What is your forecast for rainfall probability in the next 6 hours?
-    </p>
+    <div class="panel-content">
+      <button id="close-panel">Close</button>
 
-    <label>Forecast (0–100):</label>
-    <input type="range" id="forecast" min="0" max="100" value="50">
+      <p id="scenario">
+        A low‑pressure system is approaching from the west.  
+        What is your forecast for rainfall probability in the next 6 hours?
+      </p>
 
-    <button id="lock">Lock Forecast</button>
-    <button id="reveal" style="display:none;">Reveal Outcome</button>
+      <label>Forecast (0–100):</label>
+      <input type="range" id="forecast" min="0" max="100" value="50">
 
-    <div id="result" style="display:none;">
-      <p id="yourForecast"></p>
-      <p id="actualOutcome"></p>
-      <p id="feedback"></p>
+      <button id="lock">Lock Forecast</button>
+      <button id="reveal" style="display:none;">Reveal Outcome</button>
+
+      <div id="result" style="display:none;">
+        <p id="yourForecast"></p>
+        <p id="actualOutcome"></p>
+        <p id="feedback"></p>
+      </div>
     </div>
   </div>
 
   <script>
-    let lockedValue = null;
+    /* Collapsible panel logic */
+    const panel = document.getElementById("panel");
+    const closeBtn = document.getElementById("close-panel");
+    const sound = document.getElementById("panel-sound");
 
-    /* Forecast logic */
-    document.getElementById("lock").onclick = function() {
-      lockedValue = document.getElementById("forecast").value;
-      document.getElementById("forecast").disabled = true;
-      document.getElementById("lock").disabled = true;
-      document.getElementById("reveal").style.display = "block";
-    };
-
-    document.getElementById("reveal").onclick = function() {
-      const actual = 65; // temporary hard-coded outcome
-
-      document.getElementById("yourForecast").innerText =
-        "Your forecast: " + lockedValue;
-
-      document.getElementById("actualOutcome").innerText =
-        "Actual outcome: " + actual;
-
-      document.getElementById("feedback").innerText =
-        "Difference: " + Math.abs(actual - lockedValue);
-
-      document.getElementById("result").style.display = "block";
-    };
-
-    /* Clickable rooms */
-    const click = msg => () => alert(msg);
-
-    document.getElementById("obs-room").onclick = () => {
-      window.location.href = "forecast.html";
-    };
-
-    document.getElementById("geoeng-room").onclick = click("GeoEng coming soon!");
-    document.getElementById("console-room").onclick = click("Console Room coming soon!");
-    document.getElementById("holo-room").onclick = click("Advanced Holographics coming soon!");
-    document.getElementById("negotiation-room").onclick = click("Negotiation Space coming soon!");
-    document.getElementById("resource-room").onclick = click("Resource Room coming soon!");
-    document.getElementById("bioeng-room").onclick
+    panel.addEventListener("click", function(e) {
+      if (!panel.classList.contains("expanded")) {
+        panel.classList.add("expanded");
+        sound.currentTime
