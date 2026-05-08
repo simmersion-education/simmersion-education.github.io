@@ -271,3 +271,16 @@
   document.getElementById("sciops-room").onclick = click("Sci Ops Bay coming soon!");
   document.getElementById("elevator-room").onclick = click("Elevator coming soon!");
 </script>
+<script>
+document.addEventListener("mousemove", (e) => {
+  const map = document.getElementById("map-wrapper");
+  const rect = map.getBoundingClientRect();
+
+  const x = ((e.clientX - rect.left) / rect.width) * 100;
+  const y = ((e.clientY - rect.top) / rect.height) * 100;
+
+  if (x >= 0 && x <= 100 && y >= 0 && y <= 100) {
+    console.log(`X: ${x.toFixed(1)}%  Y: ${y.toFixed(1)}%`);
+  }
+});
+</script>
