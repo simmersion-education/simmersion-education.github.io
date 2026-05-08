@@ -39,7 +39,7 @@
     .room {
       position: absolute;
       cursor: pointer;
-      background: rgba(255,0,0,0.22); /* debug mode */
+      /*background: rgba(255,0,0,0.22);*/ /* debug mode */
     }
 
     /* === ROOM COORDINATES === */
@@ -277,36 +277,12 @@
   document.getElementById("elevator-room").onclick = click("Elevator coming soon!");
 </script>
 
-<style>
-#cursor-dot {
-  position: fixed;
-  width: 8px;
-  height: 8px;
-  background: yellow;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-}
-</style>
-
-<div id="cursor-dot"></div>
-
 <script>
+// No calibration tools needed in live mode.
+// This script intentionally left minimal and clean.
 window.onload = () => {
-  const dot = document.getElementById("cursor-dot");
-  const mapContainer = document.getElementById("map-container");
-  const mapWrapper = document.getElementById("map-wrapper");
-
-  mapContainer.addEventListener("mousemove", (e) => {
-    dot.style.left = e.clientX + "px";
-    dot.style.top = e.clientY + "px";
-
-    const rect = mapWrapper.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
-
-    console.log(`X: ${x.toFixed(1)}%  Y: ${y.toFixed(1)}%`);
-  });
+  // Future live-only initialisation can go here if needed.
 };
 </script>
+
 
