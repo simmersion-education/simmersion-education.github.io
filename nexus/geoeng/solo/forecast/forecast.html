@@ -9,7 +9,7 @@
       margin: 0;
       padding: 0;
       font-family: sans-serif;
-      overflow: hidden; /* prevents double scrollbars */
+      overflow: hidden;
     }
 
     /* Scrollable map container */
@@ -24,40 +24,95 @@
       background-color: #000;
     }
 
-    #map {
+    /* Ratio-locked map wrapper */
+    #map-wrapper {
+      position: relative;
       width: 100%;
-      display: block;
+      aspect-ratio: 1750 / 4150;
+      background-image: url("obs_holodeck.png");
+      background-size: contain;
+      background-repeat: no-repeat;
     }
 
-    /* Clickable room hit-areas */
+    /* Clickable rooms */
     .room {
       position: absolute;
       cursor: pointer;
-      background: rgba(255,0,0,0.25); /* turn on debug mode */
+      background: rgba(255,0,0,0.22); /* debug mode */
     }
 
+    /* === ROOM COORDINATES (based on 1750×4150) === */
 
-    /* Approximate positions — adjust as needed */
+    /* Observation Deck */
     #obs-room {
-      top: 12%;
-      left: 8%;
-      width: 20%;
-      height: 15%;
+      top: 4.3%;
+      left: 10.3%;
+      width: 78.9%;
+      height: 19.8%;
     }
-    
 
+    /* GeoEng Room */
+    #geoeng-room {
+      top: 24.8%;
+      left: 10.3%;
+      width: 78.9%;
+      height: 10.8%;
+    }
+
+    /* Console Room */
+    #console-room {
+      top: 30.8%;
+      left: 10.3%;
+      width: 78.9%;
+      height: 10.5%;
+    }
+
+    /* Advanced Holographics */
     #holo-room {
-      top: 35%;
-      left: 8%;
-      width: 20%;
-      height: 15%;
+      top: 36.1%;
+      left: 10.3%;
+      width: 78.9%;
+      height: 16.9%;
     }
 
+    /* Negotiation Space */
+    #negotiation-room {
+      top: 48.8%;
+      left: 10.3%;
+      width: 78.9%;
+      height: 10.5%;
+    }
+
+    /* Resource Room */
     #resource-room {
-      top: 58%;
-      left: 8%;
-      width: 20%;
-      height: 15%;
+      top: 61.4%;
+      left: 10.3%;
+      width: 78.9%;
+      height: 16.9%;
+    }
+
+    /* BioEng */
+    #bioeng-room {
+      top: 74.8%;
+      left: 10.3%;
+      width: 78.9%;
+      height: 12.5%;
+    }
+
+    /* Sci Ops Bay */
+    #sciops-room {
+      top: 87.0%;
+      left: 10.3%;
+      width: 78.9%;
+      height: 11.5%;
+    }
+
+    /* Elevator */
+    #elevator-room {
+      top: 22.0%;
+      left: 44%;
+      width: 12%;
+      height: 4.5%;
     }
 
     /* Floating forecast panel */
@@ -78,11 +133,6 @@
       background: #f0f0f0;
       border-radius: 6px;
     }
-    #map-wrapper {
-      position: relative;
-      width: 100%;
-      height: auto;
-    }
 
   </style>
 </head>
@@ -90,19 +140,22 @@
 <body>
 
   <!-- Scrollable map -->
-
   <div id="map-container">
-  <div id="map-wrapper">
-    <img src="obs_holodeck.png" id="map" alt="Observation Deck Map">
+    <div id="map-wrapper">
 
-    <!-- Clickable rooms -->
-    <div id="obs-room" class="room"></div>
-    <div id="holo-room" class="room"></div>
-    <div id="resource-room" class="room"></div>
+      <!-- Clickable rooms -->
+      <div id="obs-room" class="room"></div>
+      <div id="geoeng-room" class="room"></div>
+      <div id="console-room" class="room"></div>
+      <div id="holo-room" class="room"></div>
+      <div id="negotiation-room" class="room"></div>
+      <div id="resource-room" class="room"></div>
+      <div id="bioeng-room" class="room"></div>
+      <div id="sciops-room" class="room"></div>
+      <div id="elevator-room" class="room"></div>
+
+    </div>
   </div>
-  </div>
-
-
 
   <!-- Forecast panel -->
   <div id="panel">
@@ -153,19 +206,15 @@
     };
 
     /* Clickable rooms */
+    const click = msg => () => alert(msg);
+
     document.getElementById("obs-room").onclick = () => {
-      // Reloads this module (or later: opens a scenario selector)
       window.location.href = "forecast.html";
     };
 
-    document.getElementById("holo-room").onclick = () => {
-      alert("Advanced Holographics coming soon!");
-    };
-
-    document.getElementById("resource-room").onclick = () => {
-      alert("Resource Room coming soon!");
-    };
-  </script>
-
-</body>
-</html>
+    document.getElementById("geoeng-room").onclick = click("GeoEng coming soon!");
+    document.getElementById("console-room").onclick = click("Console Room coming soon!");
+    document.getElementById("holo-room").onclick = click("Advanced Holographics coming soon!");
+    document.getElementById("negotiation-room").onclick = click("Negotiation Space coming soon!");
+    document.getElementById("resource-room").onclick = click("Resource Room coming soon!");
+    document.getElementById("bioeng-room").onclick
