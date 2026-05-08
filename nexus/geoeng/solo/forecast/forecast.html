@@ -107,25 +107,27 @@
       height: 4.5%;
     }
 
-    /* Collapsible forecast panel */
+
+        /* Collapsible forecast panel */
     #panel {
       position: absolute;
       top: 2%;
       left: 2%;
       width: 260px;
-      height: 40px;              /* collapsed height */
+      height: 40px;              /* TRUE collapsed height */
       background: rgba(255,255,255,0.92);
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0,0,0,0.35);
       z-index: 50;
       transition: all 0.35s ease;
-      overflow: hidden;
+      overflow: hidden;          /* prevents hidden content from expanding box */
+      pointer-events: auto;      /* panel can be clicked */
     }
 
     /* Expanded state */
     #panel.expanded {
       width: 380px;
-      height: auto;
+      height: auto;              /* grows naturally */
       max-height: 80vh;
     }
 
@@ -135,6 +137,7 @@
       font-weight: bold;
       cursor: pointer;
       background: rgba(255,255,255,0.95);
+      z-index: 51;
     }
 
     /* Content hidden when collapsed */
@@ -143,6 +146,7 @@
       max-height: 0;
       padding: 0 12px;
       transition: opacity 0.25s ease, max-height 0.25s ease;
+      pointer-events: none;      /* <-- IMPORTANT: content cannot intercept clicks when collapsed */
     }
 
     /* Content visible when expanded */
@@ -150,22 +154,9 @@
       opacity: 1;
       max-height: 1000px;
       padding: 12px;
+      pointer-events: auto;      /* content becomes interactive */
     }
 
-    /* Close button */
-    #close-panel {
-      display: none;
-      margin-bottom: 10px;
-      background: #ddd;
-      border: none;
-      padding: 6px 10px;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    #panel.expanded #close-panel {
-      display: inline-block;
-    }
 
   </style>
 </head>
