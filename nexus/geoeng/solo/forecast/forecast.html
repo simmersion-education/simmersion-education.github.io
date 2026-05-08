@@ -112,39 +112,44 @@
       position: absolute;
       top: 2%;
       left: 2%;
-      width: 220px; /* collapsed */
-      padding: 12px;
+      width: 260px;
+      height: 40px;              /* collapsed height */
       background: rgba(255,255,255,0.92);
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0,0,0,0.35);
       z-index: 50;
       transition: all 0.35s ease;
       overflow: hidden;
-      cursor: pointer;
-      transform: translateX(-10px);
-      opacity: 0.95;
     }
 
     /* Expanded state */
     #panel.expanded {
       width: 380px;
+      height: auto;
       max-height: 80vh;
-      cursor: default;
-      transform: translateX(0);
-      opacity: 1;
     }
 
-    /* Hide content when collapsed */
+    /* Header always visible */
+    #panel-header {
+      padding: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      background: rgba(255,255,255,0.95);
+    }
+
+    /* Content hidden when collapsed */
     #panel .panel-content {
       opacity: 0;
       max-height: 0;
+      padding: 0 12px;
       transition: opacity 0.25s ease, max-height 0.25s ease;
     }
 
-    /* Show content when expanded */
+    /* Content visible when expanded */
     #panel.expanded .panel-content {
       opacity: 1;
       max-height: 1000px;
+      padding: 12px;
     }
 
     /* Close button */
@@ -190,9 +195,7 @@
 
   <!-- Forecast panel -->
   <div id="panel">
-    <div class="panel-header">
-      <strong>Observation Deck</strong>
-    </div>
+    <div id="panel-header">Observation Deck</div>
 
     <div class="panel-content">
       <button id="close-panel">Close</button>
@@ -219,10 +222,8 @@
   <script>
     /* Collapsible panel logic */
     const panel = document.getElementById("panel");
+    const header = document.getElementById("panel-header");
     const closeBtn = document.getElementById("close-panel");
     const sound = document.getElementById("panel-sound");
 
-    panel.addEventListener("click", function(e) {
-      if (!panel.classList.contains("expanded")) {
-        panel.classList.add("expanded");
-        sound.currentTime
+    header.addEventListener("click", () => {
