@@ -287,23 +287,21 @@
 <div id="cursor-dot"></div>
 
 <script>
-const dot = document.getElementById("cursor-dot");
-const mapContainer = document.getElementById("map-container");
-const mapWrapper = document.getElementById("map-wrapper");
+window.onload = () => {
+  const dot = document.getElementById("cursor-dot");
+  const mapContainer = document.getElementById("map-container");
+  const mapWrapper = document.getElementById("map-wrapper");
 
-mapContainer.addEventListener("mousemove", (e) => {
-  // Move the dot
-  dot.style.left = e.clientX + "px";
-  dot.style.top = e.clientY + "px";
+  mapContainer.addEventListener("mousemove", (e) => {
+    dot.style.left = e.clientX + "px";
+    dot.style.top = e.clientY + "px";
 
-  // Calculate coordinates relative to the map image
-  const rect = mapWrapper.getBoundingClientRect();
-  const x = ((e.clientX - rect.left) / rect.width) * 100;
-  const y = ((e.clientY - rect.top) / rect.height) * 100;
+    const rect = mapWrapper.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
 
-  // Only log if inside the map
-  if (x >= 0 && x <= 100 && y >= 0 && y <= 100) {
     console.log(`X: ${x.toFixed(1)}%  Y: ${y.toFixed(1)}%`);
-  }
-});
+  });
+};
 </script>
+
