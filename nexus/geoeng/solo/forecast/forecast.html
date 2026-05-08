@@ -210,11 +210,64 @@
     </div>
   </div>
 
-  <script>
-    /* Collapsible panel logic */
-    const panel = document.getElementById("panel");
-    const header = document.getElementById("panel-header");
-    const closeBtn = document.getElementById("close-panel");
-    const sound = document.getElementById("panel-sound");
+<script>
+  /* Collapsible panel logic */
+  const panel = document.getElementById("panel");
+  const header = document.getElementById("panel-header");
+  const closeBtn = document.getElementById("close-panel");
+  const sound = document.getElementById("panel-sound");
 
-    header.addEventListener("click", () => {
+  header.addEventListener("click", () => {
+    if (!panel.classList.contains("expanded")) {
+      panel.classList.add("expanded");
+      sound.currentTime = 0;
+      sound.play();
+    }
+  });
+
+  closeBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    panel.classList.remove("expanded");
+  });
+
+  /* Forecast logic */
+  let lockedValue = null;
+
+  document.getElementById("lock").onclick = function() {
+    lockedValue = document.getElementById("forecast").value;
+    document.getElementById("forecast").disabled = true;
+    document.getElementById("lock").disabled = true;
+    document.getElementById("reveal").style.display = "block";
+  };
+
+  document.getElementById("reveal").onclick = function() {
+    const actual = 65;
+
+    document.getElementById("yourForecast").innerText =
+      "Your forecast: " + lockedValue;
+
+    document.getElementById("actualOutcome").innerText =
+      "Actual outcome: " + actual;
+
+    document.getElementById("feedback").innerText =
+      "Difference: " + Math.abs(actual - lockedValue);
+
+    document.getElementById("result").style.display = "block";
+  };
+
+  /* Room click handlers */
+  const click = msg => () => alert(msg);
+
+  document.getElementById("obs-room").onclick = () => {
+    window.location.href = "forecast.html";
+  };
+
+  document.getElementById("geoeng-room").onclick = click("GeoEng coming soon!");
+  document.getElementById("console-room").onclick = click("Console Room coming soon!");
+  document.getElementById("holo-room").onclick = click("Advanced Holographics coming soon!");
+  document.getElementById("negotiation-room").onclick = click("Negotiation Space coming soon!");
+  document.getElementById("resource-room").onclick = click("Resource Room coming soon!");
+  document.getElementById("bioeng-room").onclick = click("BioEng coming soon!");
+  document.getElementById("sciops-room").onclick = click("Sci Ops Bay coming soon!");
+  document.getElementById("elevator-room").onclick = click("Elevator coming soon!");
+</script>
