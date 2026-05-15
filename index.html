@@ -18,22 +18,20 @@
       color: #111;
     }
 
-    /* RESTORED LOGO BLOCK */
+    /* CLEAN BLACK BLOCK LOGO */
     .logo-block {
       display: inline-block;
       margin: 0 auto 40px auto;
       padding: 20px 40px;
-      background: linear-gradient(to right, black 52%, white 52%);
+      background: black;
     }
 
     .logo-text {
       font-size: 48px;
       font-weight: 700;
-      background: linear-gradient(to right, white 52%, black 52%);
-      -webkit-background-clip: text;
-      color: transparent;
-      position: relative;
+      color: white;
       letter-spacing: 0.5px;
+      white-space: nowrap;
     }
 
     .logo-text .dot {
@@ -41,9 +39,17 @@
       height: 0.38em;
       display: inline-block;
       border-radius: 50%;
+      background: white;
       position: relative;
       top: 0.05em;
-      background: linear-gradient(to right, white 50%, black 50%);
+      margin: 0 2px;
+    }
+
+    .logo-text .education {
+      color: black;
+      background: white;
+      padding-left: 10px;
+      padding-right: 4px;
     }
 
     .hero {
@@ -84,13 +90,13 @@
 
   <div class="logo-block">
     <span class="logo-text">
-      simmersion<span class="dot"></span>education
+      simmersion<span class="dot"></span><span class="education">education</span>
     </span>
   </div>
 
   <p class="hero">
     Simmersion builds structured learning worlds.  
-    Each world is a calm, explorable environment where people practise thinking, communicating, and making decisions without pressure.
+    Each world is an immersive, explorable environment where people can make decisions without real‑world consequences.
   </p>
 
   <p>
