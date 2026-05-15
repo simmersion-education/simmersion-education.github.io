@@ -18,18 +18,20 @@
       color: #111;
     }
 
-    /* CLEAN BLACK BLOCK LOGO */
+    /* ORIGINAL LOGO — BLACK BLOCK + HINGE DOT */
     .logo-block {
       display: inline-block;
       margin: 0 auto 40px auto;
       padding: 20px 40px;
-      background: black;
+      background: linear-gradient(to right, black 54%, white 54%);
     }
 
     .logo-text {
       font-size: 48px;
       font-weight: 700;
-      color: white;
+      background: linear-gradient(to right, white 54%, black 54%);
+      -webkit-background-clip: text;
+      color: transparent;
       letter-spacing: 0.5px;
       white-space: nowrap;
     }
@@ -39,17 +41,10 @@
       height: 0.38em;
       display: inline-block;
       border-radius: 50%;
-      background: white;
+      background: linear-gradient(to right, white 50%, black 50%);
       position: relative;
       top: 0.05em;
       margin: 0 2px;
-    }
-
-    .logo-text .education {
-      color: black;
-      background: white;
-      padding-left: 10px;
-      padding-right: 4px;
     }
 
     .hero {
@@ -90,7 +85,7 @@
 
   <div class="logo-block">
     <span class="logo-text">
-      simmersion<span class="dot"></span><span class="education">education</span>
+      simmersion<span class="dot"></span>education
     </span>
   </div>
 
@@ -127,7 +122,7 @@
 
       <li>
         <a href="/envoy/"><strong>Envoy</strong></a>  
-        human space exploration and communication — practising calm, clear interaction.
+        human space exploration and communication — practising clear, grounded interaction.
       </li>
 
       <li>
@@ -170,7 +165,7 @@
       <li><strong>Education:</strong> schools, AP, SEN, tutoring, youth groups</li>
       <li><strong>Corporate:</strong> communication, onboarding, leadership, risk training</li>
       <li><strong>Community:</strong> mentoring, youth development, faith formation</li>
-      <li><strong>Learners:</strong> anyone who thrives with structure, exploration, and calm practice</li>
+      <li><strong>Learners:</strong> anyone who thrives with structure, exploration, and low‑pressure practice</li>
     </ul>
   </div>
 
