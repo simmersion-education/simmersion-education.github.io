@@ -5,120 +5,97 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Nexus | Simmersion Education</title>
   <style>
+    :root { --ink:#111; --text:#222; --muted:#555; --rule:#ddd; --text-w:760px; --media-w:960px; }
+    * { box-sizing: border-box; }
     body {
-      font-family: Arial, sans-serif;
-      padding: 40px;
-      max-width: 800px;
-      margin: auto;
-      line-height: 1.7;
-      color: #222;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 18px;
+      line-height: 1.6;
+      color: var(--text);
+      margin: 0;
+      padding: 48px 24px 32px;
+      -webkit-text-size-adjust: 100%;
     }
-
-    h1, h2, h3 {
-      font-weight: 600;
-      color: #111;
+    body > * { max-width: var(--text-w); margin-left: auto; margin-right: auto; }
+    body > .logo-block { display: block; width: max-content; margin: 0 auto 48px; }
+    h1, h2, h3 { font-weight: 600; color: var(--ink); line-height: 1.2; }
+    h1 { font-size: 2.6rem; letter-spacing: -0.5px; margin: 0 auto 8px; }
+    h2 {
+      font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.16em;
+      color: var(--muted); margin: 0 0 20px;
     }
+    h3 { font-size: 1.15rem; }
+    p { margin: 0 0 1.1em; }
 
     /* ORIGINAL LOGO — BLACK BLOCK + HINGE DOT */
-    .logo-block {
-      display: inline-block;
-      margin: 0 auto 40px auto;
-      padding: 20px 40px;
-      background: linear-gradient(to right, black 54%, white 54%);
-    }
-
+    .logo-block { padding: 20px 40px; background: linear-gradient(to right, black 54%, white 54%); }
     .logo-text {
-      font-size: 48px;
-      font-weight: 700;
+      font-size: 48px; font-weight: 700; letter-spacing: 0.5px; white-space: nowrap;
       background: linear-gradient(to right, white 54%, black 54%);
-      -webkit-background-clip: text;
-      color: transparent;
-      letter-spacing: 0.5px;
-      white-space: nowrap;
+      -webkit-background-clip: text; background-clip: text; color: transparent;
     }
-
     .logo-text .dot {
-      width: 0.38em;
-      height: 0.38em;
-      display: inline-block;
-      border-radius: 50%;
+      width: 0.38em; height: 0.38em; display: inline-block; border-radius: 50%;
       background: linear-gradient(to right, white 50%, black 50%);
-      position: relative;
-      top: 0.05em;
-      margin: 0 2px;
+      position: relative; top: 0.05em; margin: 0 2px;
     }
 
-    .hero {
-      font-size: 1.4rem;
-      margin-bottom: 20px;
-      line-height: 1.5;
+    .hero-figure {
+      max-width: var(--media-w); margin: 32px auto 40px;
+      background: #000; border: 1px solid var(--ink);
+      display: flex; justify-content: center;
     }
-
-    .section {
-      margin-top: 40px;
+    .hero-figure img {
+      display: block; width: auto; max-width: 100%; height: auto; max-height: 720px;
     }
+    .hero { font-size: 1.35rem; line-height: 1.5; color: var(--ink); margin-bottom: 48px; }
 
-    a {
-      color: #0055aa;
-      text-decoration: none;
+    .section { padding: 48px 0; border-top: 1px solid var(--rule); }
+    #try-nexus { max-width: var(--media-w); }
+    #try-nexus > p { max-width: var(--text-w); }
+
+    .video-frame {
+      position: relative; width: 100%; aspect-ratio: 16 / 9;
+      background: #000; border: 1px solid var(--ink); margin: 0 0 24px;
     }
+    .nexus-video { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
 
-    a:hover {
-      text-decoration: underline;
-    }
-
-    .module-list li {
-      margin-bottom: 8px;
-    }
-
-    /* NEXUS SHOWCASE */
-    .nexus-video {
-      width: 100%;
-      height: auto;
-      display: block;
-      background: #000;
-      margin: 20px 0;
-    }
-
-    .buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin: 20px 0;
-    }
-
+    .buttons { display: flex; flex-wrap: wrap; gap: 12px; margin: 0 0 28px; }
     .button {
-      display: inline-block;
-      padding: 12px 22px;
-      border: 2px solid #111;
-      font-weight: 600;
-      color: #111;
+      display: inline-block; padding: 13px 26px; border: 2px solid var(--ink);
+      font-weight: 600; font-size: 1rem; color: var(--ink); text-decoration: none;
+      transition: background .15s, color .15s;
     }
+    .button.primary { background: var(--ink); color: #fff; }
+    .button:hover, .button:focus-visible { background: #fff; color: var(--ink); text-decoration: none; }
+    .button:not(.primary):hover, .button:not(.primary):focus-visible { background: var(--ink); color: #fff; }
 
-    .button.primary {
-      background: #111;
-      color: #fff;
+    a { color: #0055aa; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    code { font-family: Consolas, Menlo, monospace; font-size: 0.9em; background: #f3f3f3; padding: 1px 5px; }
+
+    .module-list {
+      list-style: none; padding: 0; margin: 0;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;
     }
+    .module-list li { border: 1px solid var(--rule); padding: 20px 22px; line-height: 1.5; }
+    .module-list li a { display: block; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
 
-    .button:hover {
-      text-decoration: none;
-      opacity: 0.85;
+    footer {
+      margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--rule);
+      font-size: 0.9rem; color: var(--muted); text-align: center;
     }
 
     @media (max-width: 600px) {
-      body { padding: 20px; }
+      body { font-size: 17px; padding: 28px 18px 24px; }
+      body > .logo-block { padding: 14px 24px; margin-bottom: 32px; }
       .logo-text { font-size: 30px; }
-      .logo-block { padding: 14px 24px; }
+      h1 { font-size: 2rem; }
+      .hero { font-size: 1.2rem; margin-bottom: 32px; }
+      .hero-figure { margin: 20px -18px 28px; border-left: 0; border-right: 0; }
+      .hero-figure img { max-height: 560px; }
+      .section { padding: 36px 0; }
       .button { flex: 1 1 100%; text-align: center; }
-    }
-
-    footer {
-      margin-top: 60px;
-      padding-top: 20px;
-      border-top: 1px solid #ccc;
-      font-size: 0.9rem;
-      color: #555;
-      text-align: center;
     }
   </style>
 </head>
@@ -131,7 +108,13 @@
 
   <h1>Nexus</h1>
 
-  <img src="/images/nexus-astronaut.png" alt="Nexus mission image" style="width:100%; max-width:600px; margin:20px 0;">
+  <figure class="hero-figure">
+    <picture>
+      <source type="image/webp" srcset="/images/nexus-astronaut-640.webp 640w, /images/nexus-astronaut-1024.webp 1024w" sizes="(max-width: 600px) 100vw, 480px">
+      <img src="/images/nexus-astronaut-1024.jpg" srcset="/images/nexus-astronaut-640.jpg 640w, /images/nexus-astronaut-1024.jpg 1024w" sizes="(max-width: 600px) 100vw, 480px"
+           width="1024" height="1536" alt="Nexus mission image" loading="eager" fetchpriority="high" decoding="async">
+    </picture>
+  </figure>
 
   <p class="hero">
     Nexus is outer space exploration: a structured mission world where learners practise systems thinking, forecasting, and calm decision‑making inside a living sci‑fi environment.
@@ -139,11 +122,13 @@
 
   <div class="section" id="try-nexus">
     <h2>Try It Now</h2>
+    <div class="video-frame">
     <video class="nexus-video" controls playsinline preload="metadata"
            poster="https://nexusmovie.simmersion.education/poster.jpg">
       <source src="https://nexusmovie.simmersion.education/nexus_promo.mp4" type="video/mp4">
       Your browser can't play this video. <a href="https://nexusmovie.simmersion.education/">Watch the trailer here</a>.
     </video>
+    </div>
     <div class="buttons">
       <a class="button primary" href="https://nexus.simmersion.education/">Play the live demo</a>
       <a class="button" href="https://nexusmovie.simmersion.education/">Watch the trailer</a>
@@ -166,7 +151,7 @@
       Learners explore complex situations, recognise patterns, and respond with clarity — all within a calm, predictable structure.
     </p>
     <p>
-      Nexus is not a game.  
+      Nexus is not just a game.  
       It is a training ground for structured thinking, situational awareness, and low‑pressure decision‑making.
     </p>
   </div>
