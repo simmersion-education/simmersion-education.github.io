@@ -1,3 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nexus | Simmersion Education</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      max-width: 800px;
+      margin: auto;
+      line-height: 1.7;
+      color: #222;
+    }
+
+    h1, h2, h3 {
+      font-weight: 600;
+      color: #111;
+    }
+
+    /* ORIGINAL LOGO — BLACK BLOCK + HINGE DOT */
+    .logo-block {
+      display: inline-block;
+      margin: 0 auto 40px auto;
+      padding: 20px 40px;
+      background: linear-gradient(to right, black 54%, white 54%);
+    }
+
+    .logo-text {
+      font-size: 48px;
+      font-weight: 700;
+      background: linear-gradient(to right, white 54%, black 54%);
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+
+    .logo-text .dot {
+      width: 0.38em;
+      height: 0.38em;
+      display: inline-block;
+      border-radius: 50%;
+      background: linear-gradient(to right, white 50%, black 50%);
+      position: relative;
+      top: 0.05em;
+      margin: 0 2px;
+    }
+
+    .hero {
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .section {
+      margin-top: 40px;
+    }
+
+    a {
+      color: #0055aa;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .module-list li {
+      margin-bottom: 8px;
+    }
+
+    /* NEXUS SHOWCASE */
+    .nexus-video {
+      width: 100%;
+      height: auto;
+      display: block;
+      background: #000;
+      margin: 20px 0;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 20px 0;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 22px;
+      border: 2px solid #111;
+      font-weight: 600;
+      color: #111;
+    }
+
+    .button.primary {
+      background: #111;
+      color: #fff;
+    }
+
+    .button:hover {
+      text-decoration: none;
+      opacity: 0.85;
+    }
+
+    @media (max-width: 600px) {
+      body { padding: 20px; }
+      .logo-text { font-size: 30px; }
+      .logo-block { padding: 14px 24px; }
+      .button { flex: 1 1 100%; text-align: center; }
+    }
+
+    footer {
+      margin-top: 60px;
+      padding-top: 20px;
+      border-top: 1px solid #ccc;
+      font-size: 0.9rem;
+      color: #555;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+
   <div class="logo-block">
     <span class="logo-text">simmersion<span class="dot"></span>education</span>
   </div>
@@ -9,6 +136,27 @@
   <p class="hero">
     Nexus is outer space exploration: a structured mission world where learners practise systems thinking, forecasting, and calm decision‑making inside a living sci‑fi environment.
   </p>
+
+  <div class="section" id="try-nexus">
+    <h2>Try It Now</h2>
+    <video class="nexus-video" controls playsinline preload="metadata"
+           poster="https://nexusmovie.simmersion.education/poster.jpg">
+      <source src="https://nexusmovie.simmersion.education/nexus_promo.mp4" type="video/mp4">
+      Your browser can't play this video. <a href="https://nexusmovie.simmersion.education/">Watch the trailer here</a>.
+    </video>
+    <div class="buttons">
+      <a class="button primary" href="https://nexus.simmersion.education/">Play the live demo</a>
+      <a class="button" href="https://nexusmovie.simmersion.education/">Watch the trailer</a>
+    </div>
+    <p>
+      Nexus is now playable in the browser as a demo, and is currently being playtested. Crews in exosuits work
+      across the Bridge/Command, Operations, Engineering and Flex/Security decks, moving between them by the Transmuter.
+      They tackle problems such as a coolant leak or a malware intrusion using real cyber-security style commands
+      like <code>diff</code>, <code>view</code> and <code>del</code>, guided by Shipmind, the ship's calm, supportive AI.
+      It is designed for young people, including SEN learners, and Nexus clubs are being planned in Oxfordshire through
+      <a href="https://edventures.uk">Edventures</a>.
+    </p>
+  </div>
 
   <div class="section">
     <h2>What is Nexus?</h2>
@@ -34,4 +182,17 @@
       </li>
       <li>
         <a href="/nexus/geoeng/solo/forecast/forecast.html">
-          Observation
+          Observation Deck (Prototype)
+        </a>
+        — an early holodeck map where you can explore the environment and run the mission loop.
+      </li>
+    </ul>
+  </div>
+
+  <footer>
+    Contact: <a href="mailto:ed@edventures.uk">ed@edventures.uk</a><br>
+    © Simmersion Education
+  </footer>
+
+</body>
+</html>
