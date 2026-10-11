@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Simmersion Education</title>
   <style>
     body {
@@ -70,6 +71,47 @@
       margin-bottom: 8px;
     }
 
+    /* NEXUS SHOWCASE */
+    .nexus-video {
+      width: 100%;
+      height: auto;
+      display: block;
+      background: #000;
+      margin: 20px 0;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 20px 0;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 22px;
+      border: 2px solid #111;
+      font-weight: 600;
+      color: #111;
+    }
+
+    .button.primary {
+      background: #111;
+      color: #fff;
+    }
+
+    .button:hover {
+      text-decoration: none;
+      opacity: 0.85;
+    }
+
+    @media (max-width: 600px) {
+      body { padding: 20px; }
+      .logo-text { font-size: 30px; }
+      .logo-block { padding: 14px 24px; }
+      .button { flex: 1 1 100%; text-align: center; }
+    }
+
     footer {
       margin-top: 60px;
       padding-top: 20px;
@@ -114,6 +156,33 @@
     <p>
       The platform works across education, training and personal development because the core engine 
       is flexible, modular and human centred.
+    </p>
+  </div>
+
+  <div class="section" id="nexus-showcase">
+    <h2>Nexus: Now Playable as a Demo</h2>
+    <video class="nexus-video" controls playsinline preload="metadata"
+           poster="https://nexusmovie.simmersion.education/poster.jpg">
+      <source src="https://nexusmovie.simmersion.education/nexus_promo.mp4" type="video/mp4">
+      Your browser can't play this video. <a href="https://nexusmovie.simmersion.education/">Watch the trailer here</a>.
+    </video>
+    <div class="buttons">
+      <a class="button primary" href="https://nexus.simmersion.education/">Play the live demo</a>
+      <a class="button" href="https://nexusmovie.simmersion.education/">Watch the trailer</a>
+    </div>
+    <p>
+      Nexus is a browser-based starship simulation for young people, including SEN learners, built to be played in clubs.
+      Crews in exosuits work across the ship's decks: Bridge/Command, Operations, Engineering and Flex/Security,
+      moving between them by the Transmuter.
+    </p>
+    <p>
+      Together they solve problems such as a coolant leak or a malware intrusion, using real cyber-security style
+      commands like <code>diff</code>, <code>view</code> and <code>del</code>. Throughout, they are guided by Shipmind,
+      the ship's calm, supportive AI.
+    </p>
+    <p>
+      Nexus is currently in demo and playtesting. Nexus clubs are being planned in Oxfordshire through
+      <a href="https://edventures.uk">Edventures</a>. Our other worlds, Envoy, BasketBrain and Testament, are in development.
     </p>
   </div>
 
