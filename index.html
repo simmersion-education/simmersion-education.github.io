@@ -1,274 +1,420 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Simmersion Education</title>
+  <title>Simmersion Education — Nexus</title>
+  <meta name="description" content="Simmersion Education builds immersive learning worlds. Nexus is the first: a human-facilitated starship simulation where young crews learn maths, physics, teamwork and confidence.">
   <style>
+    :root {
+      --ink: #16181d;
+      --muted: #4a5160;
+      --paper: #f6f3ec;
+      --card: #fffdf8;
+      --line: #d9d3c6;
+      --navy: #16325c;
+      --navy-dark: #0f2240;
+      --accent: #1b4f8a;
+      --radius: 14px;
+      --max: 42rem;
+      --wide: 58rem;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      padding: 40px;
-      max-width: 800px;
-      margin: auto;
-      line-height: 1.7;
-      color: #222;
+      margin: 0;
+      font-family: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.65;
+      font-size: 1.0625rem;
     }
 
-    h1, h2, h3 {
-      font-weight: 600;
-      color: #111;
+    a { color: var(--accent); }
+    a:hover { text-decoration-thickness: 2px; }
+    a:focus-visible, button:focus-visible, .button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
     }
 
-    /* ORIGINAL LOGO — BLACK BLOCK + HINGE DOT */
+    .skip {
+      position: absolute;
+      left: 1rem;
+      top: -4rem;
+      background: #fff;
+      color: var(--ink);
+      padding: .6rem 1rem;
+      z-index: 10;
+    }
+    .skip:focus { top: 1rem; }
+
+    .wrap { width: min(var(--wide), calc(100% - 2.4rem)); margin: 0 auto; }
+    .narrow { width: min(var(--max), 100%); margin: 0 auto; }
+
+    header.site {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.1rem 0 0;
+      flex-wrap: wrap;
+    }
+
     .logo-block {
       display: inline-block;
-      margin: 0 auto 40px auto;
-      padding: 20px 40px;
-      background: linear-gradient(to right, black 54%, white 54%);
+      padding: .7rem 1.15rem;
+      background: linear-gradient(to right, #000 54%, #fff 54%);
+      border: 1px solid #000;
+      text-decoration: none;
     }
-
     .logo-text {
-      font-size: 48px;
+      font-size: clamp(1.15rem, 3.6vw, 1.7rem);
       font-weight: 700;
-      background: linear-gradient(to right, white 54%, black 54%);
-      -webkit-background-clip: text;
-      color: transparent;
-      letter-spacing: 0.5px;
+      letter-spacing: .4px;
       white-space: nowrap;
+      background: linear-gradient(to right, #fff 54%, #000 54%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
-
     .logo-text .dot {
-      width: 0.38em;
-      height: 0.38em;
+      width: .38em;
+      height: .38em;
       display: inline-block;
       border-radius: 50%;
-      background: linear-gradient(to right, white 50%, black 50%);
+      background: linear-gradient(to right, #fff 50%, #000 50%);
       position: relative;
-      top: 0.05em;
+      top: .05em;
       margin: 0 2px;
     }
 
-    .hero {
-      font-size: 1.4rem;
-      margin-bottom: 20px;
-      line-height: 1.5;
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .2rem .9rem;
+      font-size: .95rem;
     }
-
-    .section {
-      margin-top: 40px;
-    }
-
-    a {
-      color: #0055aa;
+    nav a {
+      color: var(--navy);
       text-decoration: none;
+      font-weight: 600;
+    }
+    nav a:hover { text-decoration: underline; }
+
+    .hero { padding: 2.4rem 0 1.5rem; }
+    .eyebrow {
+      margin: 0 0 .6rem;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+    h1 {
+      margin: 0 0 1rem;
+      font-size: clamp(1.7rem, 4.2vw, 2.45rem);
+      line-height: 1.22;
+      letter-spacing: -.02em;
+      color: var(--navy-dark);
+      max-width: 20ch;
+    }
+    .hero .lead {
+      margin: 0 0 1.4rem;
+      font-size: 1.15rem;
+      color: var(--muted);
+      max-width: 40rem;
     }
 
-    a:hover {
-      text-decoration: underline;
+    .video-frame {
+      background: #000;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 16px 40px rgba(15, 34, 64, .16);
     }
-
-    .module-list li {
-      margin-bottom: 8px;
-    }
-
-    /* NEXUS SHOWCASE */
-    .nexus-video {
+    .video-frame video {
+      display: block;
       width: 100%;
       height: auto;
-      display: block;
+      aspect-ratio: 16 / 9;
       background: #000;
-      margin: 20px 0;
+    }
+    .video-caption {
+      margin: .7rem 0 0;
+      font-size: .9rem;
+      color: var(--muted);
     }
 
     .buttons {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
-      margin: 20px 0;
+      gap: .7rem;
+      margin: 1.3rem 0 0;
     }
-
     .button {
       display: inline-block;
-      padding: 12px 22px;
-      border: 2px solid #111;
-      font-weight: 600;
-      color: #111;
+      padding: .8rem 1.25rem;
+      border-radius: 999px;
+      font-weight: 700;
+      text-decoration: none;
+      border: 2px solid var(--navy);
+      line-height: 1.2;
     }
-
     .button.primary {
-      background: #111;
+      background: var(--navy);
       color: #fff;
     }
-
-    .button:hover {
-      text-decoration: none;
-      opacity: 0.85;
+    .button.primary:hover { background: var(--navy-dark); border-color: var(--navy-dark); }
+    .button.secondary {
+      background: transparent;
+      color: var(--navy);
     }
+    .button.secondary:hover { background: #e7e1d5; }
 
-    @media (max-width: 600px) {
-      body { padding: 20px; }
-      .logo-text { font-size: 30px; }
-      .logo-block { padding: 14px 24px; }
-      .button { flex: 1 1 100%; text-align: center; }
+    section {
+      padding: 2.4rem 0;
+      border-top: 1px solid var(--line);
+    }
+    h2 {
+      margin: 0 0 .9rem;
+      font-size: 1.55rem;
+      line-height: 1.25;
+      color: var(--navy-dark);
+    }
+    h3 {
+      margin: 0 0 .35rem;
+      font-size: 1.05rem;
+      color: var(--navy);
+    }
+    p { margin: 0 0 1rem; }
+    p:last-child, ul:last-child { margin-bottom: 0; }
+
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(15.5rem, 1fr));
+      gap: .9rem;
+      margin: 1.1rem 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .skills li {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 1rem 1.05rem 1.05rem;
+    }
+    .skills p { color: var(--muted); font-size: .98rem; }
+
+    .worlds {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+      gap: .9rem;
+      margin: 1.1rem 0 0;
+    }
+    .world {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 1rem 1.05rem 1.1rem;
+    }
+    .world .status {
+      display: inline-block;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: var(--navy);
+      margin-bottom: .4rem;
+    }
+    .world h3 { font-size: 1.15rem; }
+    .world h3 a { color: inherit; text-decoration: none; }
+    .world h3 a:hover { text-decoration: underline; color: var(--accent); }
+    .world p { color: var(--muted); font-size: .98rem; }
+
+    .contact-box {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.2rem 1.3rem;
+    }
+    .contact-box a.email {
+      font-weight: 700;
+      font-size: 1.15rem;
+      word-break: break-word;
     }
 
     footer {
-      margin-top: 60px;
-      padding-top: 20px;
-      border-top: 1px solid #ccc;
-      font-size: 0.9rem;
-      color: #555;
-      text-align: center;
+      border-top: 1px solid var(--line);
+      padding: 1.6rem 0 2.4rem;
+      color: var(--muted);
+      font-size: .92rem;
+    }
+    footer p { margin: 0 0 .45rem; }
+    footer nav { margin-bottom: .8rem; }
+
+    @media (max-width: 640px) {
+      .hero { padding-top: 1.6rem; }
+      h1 { max-width: none; }
+      .buttons .button { flex: 1 1 100%; text-align: center; }
+      header.site { padding-top: .9rem; }
     }
   </style>
 </head>
-
 <body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="wrap">
+    <header class="site">
+      <a class="logo-block" href="#main" aria-label="Simmersion Education">
+        <span class="logo-text">simmersion<span class="dot"></span>education</span>
+      </a>
+      <nav aria-label="Page">
+        <a href="#nexus">Nexus</a>
+        <a href="#schools">Schools and clubs</a>
+        <a href="#worlds">Worlds</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
 
-  <div class="logo-block">
-    <span class="logo-text">
-      simmersion<span class="dot"></span>education
-    </span>
+    <main id="main">
+      <section class="hero" aria-labelledby="hero-title" style="border-top:0; padding-top:2.2rem;">
+        <div class="narrow">
+          <p class="eyebrow">Simmersion Education</p>
+          <h1 id="hero-title">Young crews learn maths, physics, teamwork and confidence aboard a starship.</h1>
+          <p class="lead">Nexus is our first learning world: a human-facilitated mission, supported by a game engine, with the learning built into the work of the crew.</p>
+        </div>
+        <div class="video-frame">
+          <video controls playsinline preload="metadata" poster="https://nexusmovie.simmersion.education/poster.jpg" title="Nexus promo film">
+            <source src="https://nexusmovie.simmersion.education/nexus_promo_v13.mp4" type="video/mp4">
+            Your browser cannot play this video. <a href="https://nexusmovie.simmersion.education/">Watch the promo on its own page</a>.
+          </video>
+        </div>
+        <p class="video-caption">A short look at Nexus. The film plays only if you press play, and has no soundtrack yet.</p>
+        <div class="buttons">
+          <a class="button primary" href="https://nexus.simmersion.education/">Play the demo</a>
+          <a class="button secondary" href="mailto:ed@edventures.uk?subject=Nexus%20pilot%20enquiry">Register interest in a pilot</a>
+        </div>
+      </section>
+
+      <section id="nexus" aria-labelledby="nexus-title">
+        <div class="narrow">
+          <h2 id="nexus-title">What Nexus is</h2>
+          <p>Nexus is a browser-based starship role-playing game for young people. Crews take on roles, move between the ship’s decks and work together on problems that need careful thinking — a coolant leak, a systems fault, a plan that has to hold under pressure.</p>
+          <p>A real person facilitates every session. That facilitator, the Director, helps the crew take part, work through the challenge and reflect on what they discovered. The game engine supports the mission; it does not replace the human guide.</p>
+          <p>Learning sits in the DNA of the game, not as an exercise bolted on afterwards. To steer, aim, repair and decide, players use real ideas from maths and physics, and they have to explain their thinking to one another. Shipmind, the ship’s calm, supportive AI, is there to help — but the crew still has to do the work.</p>
+          <p>Nexus is currently in demo and playtesting. You can try the demo in a browser today.</p>
+        </div>
+      </section>
+
+      <section id="learn" aria-labelledby="learn-title">
+        <div class="narrow">
+          <h2 id="learn-title">What players learn</h2>
+          <p>The mission asks for the same skills a good classroom wants to grow, practised in a setting that feels purposeful.</p>
+          <ul class="skills">
+            <li>
+              <h3>Vectors and matrices</h3>
+              <p>Players work with real vectors and trajectories, and use matrices when they aim and fire. The maths is there because the ship needs it.</p>
+            </li>
+            <li>
+              <h3>Physics you can feel</h3>
+              <p>Flight practice is built on thrust, coast and braking, with physics that behaves as it should, not as a shortcut.</p>
+            </li>
+            <li>
+              <h3>Problem-solving</h3>
+              <p>Crews investigate what they can see, weigh options, try a plan and look again. The loop is observe, act and reflect.</p>
+            </li>
+            <li>
+              <h3>Teamwork and communication</h3>
+              <p>No one runs the ship alone. Players have to share what they notice, listen, and reach a decision as a crew.</p>
+            </li>
+            <li>
+              <h3>Confidence</h3>
+              <p>The setting is structured and supportive, including for SEN learners. Confidence grows from doing the work, not from being told it went well.</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="schools" aria-labelledby="schools-title">
+        <div class="narrow">
+          <h2 id="schools-title">For schools, SEN and clubs</h2>
+          <p>Nexus is designed for young people, including SEN learners, and is a natural fit for schools, alternative provision, tutoring and youth clubs. Sessions are facilitated online, in the browser, by a real person.</p>
+          <p>We are now taking expressions of interest for pilot sessions; dates will be arranged with you. A teacher, club leader or family can try a facilitated session and see whether it is a good fit before any wider commitment.</p>
+          <p>Nexus clubs are also being planned in Oxfordshire through <a href="https://edventures.uk/">Edventures</a>.</p>
+          <p>Pilot price, session length, age range and group size are available on request. Registering interest sends an email enquiry to Ed; it does not take a payment or confirm a booking.</p>
+        </div>
+      </section>
+
+      <section id="progress" aria-labelledby="progress-title">
+        <div class="narrow">
+          <h2 id="progress-title">Evidence of progress</h2>
+          <p>Progress in Nexus is meant to be visible, not only felt. Over time, players will have a record of their progression and merits, and facilitators will be able to use session reports. That is one of the ways Nexus is designed to be useful to schools and clubs, not only enjoyable in the moment.</p>
+          <p>Player records and facilitator reports are in development, and are not a finished feature of the current demo.</p>
+        </div>
+      </section>
+
+      <section id="worlds" aria-labelledby="worlds-title">
+        <div class="narrow">
+          <h2 id="worlds-title">The worlds</h2>
+          <p>Simmersion Education builds immersive learning worlds — structured places to explore, decide and learn through action — rather than lessons or worksheets. Nexus is the first, and the one you can try now. Others are on the way.</p>
+        </div>
+        <div class="worlds">
+          <article class="world">
+            <p class="status">Playable demo</p>
+            <h3><a href="https://nexus.simmersion.education/">Nexus</a></h3>
+            <p>A living starship simulation. Crews practise systems thinking, problem-solving and collaborative reasoning on a mission together.</p>
+          </article>
+          <article class="world">
+            <p class="status">Coming</p>
+            <h3><a href="https://simmersion.education/envoy/">Envoy</a></h3>
+            <p>Diplomatic theatre: structured conflict, careful dialogue and communication under pressure. In early development.</p>
+          </article>
+          <article class="world">
+            <p class="status">Coming</p>
+            <h3><a href="https://simmersion.education/basketbrain/">BasketBrain</a></h3>
+            <p>A playful economic world where choices shape outcomes, from everyday decisions to their consequences. In development.</p>
+          </article>
+          <article class="world">
+            <p class="status">Coming</p>
+            <h3><a href="https://simmersion.education/testament/">Testament</a></h3>
+            <p>A reflective world built around parables, looking at values, motives and meaning through guided narrative. In prototype form.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="about" aria-labelledby="about-title">
+        <div class="narrow">
+          <h2 id="about-title">About Ed</h2>
+          <p>Ed Harnett leads Simmersion Education, and is based in Oxfordshire. He has taught music, science and computer science at secondary school, and tutors a diverse range of students. He holds a Masters in Meteorology and a PGCE.</p>
+          <p>He facilitates Nexus sessions himself, helping learners engage with a range of STEM challenges, and grow in confidence. Clubs and tutoring with <a href="https://edventures.uk/">Edventures</a> continue alongside this work.</p>
+        </div>
+      </section>
+
+      <section id="contact" aria-labelledby="contact-title">
+        <div class="narrow">
+          <h2 id="contact-title">Get in touch</h2>
+          <div class="contact-box">
+            <p>To register interest in a pilot, or talk about Nexus for a school or club, email Ed:</p>
+            <p><a class="email" href="mailto:ed@edventures.uk?subject=Nexus%20pilot%20enquiry">ed@edventures.uk</a></p>
+            <p>There is no booking form on this page yet. A short email is the best first step. Dates will be arranged with you, and we can discuss the session format and practical arrangements before anything is booked.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <nav aria-label="Footer">
+        <a href="https://nexus.simmersion.education/">Play the demo</a>
+        <a href="https://nexusmovie.simmersion.education/">Promo film</a>
+        <a href="https://edventures.uk/">Edventures</a>
+      </nav>
+      <p>Contact: <a href="mailto:ed@edventures.uk">ed@edventures.uk</a></p>
+      <p>© Simmersion Education</p>
+    </footer>
   </div>
-
-  <p class="hero">
-    Simmersion builds immersive learning systems. Not lessons or worksheets, but worlds.  
-    Each world is a structured environment where people explore, decide, and learn through action.
-  </p>
-
-  <p>
-    Every Simmersion world follows a clear loop of observation, action and reflection.  
-    Learners step into a role, interact with a living environment, and build capability through 
-    steady, repeatable missions. It is learning by doing, grounded, dramatic and deeply human.
-  </p>
-
-  <div class="section">
-    <h2>What is Simmersion?</h2>
-    <p>
-      Simmersion is a platform for mission based simulation and learning.  
-      Each world is built on three pillars:
-    </p>
-    <ul class="module-list">
-      <li><strong>Exploration</strong> — a space to move, observe and interact</li>
-      <li><strong>Structure</strong> — predictable routines and clear rules</li>
-      <li><strong>Reflection</strong> — feedback loops that build confidence and capability</li>
-    </ul>
-    <p>
-      The platform works across education, training and personal development because the core engine 
-      is flexible, modular and human centred.
-    </p>
-  </div>
-
-  <div class="section" id="nexus-showcase">
-    <h2>Nexus: Now Playable as a Demo</h2>
-    <video class="nexus-video" controls playsinline preload="metadata"
-           poster="https://nexusmovie.simmersion.education/poster.jpg">
-      <source src="https://nexusmovie.simmersion.education/nexus_promo.mp4" type="video/mp4">
-      Your browser can't play this video. <a href="https://nexusmovie.simmersion.education/">Watch the trailer here</a>.
-    </video>
-    <div class="buttons">
-      <a class="button primary" href="https://nexus.simmersion.education/">Play the live demo</a>
-      <a class="button" href="https://nexusmovie.simmersion.education/">Watch the trailer</a>
-    </div>
-    <p>
-      Nexus is a browser-based starship simulation for young people, including SEN learners, built to be played in clubs.
-      Crews in exosuits work across the ship's decks: Bridge/Command, Operations, Engineering and Flex/Security,
-      moving between them by the Transmuter.
-    </p>
-    <p>
-      Together they solve problems such as a coolant leak or a malware intrusion, using real cyber-security style
-      commands like <code>diff</code>, <code>view</code> and <code>del</code>. Throughout, they are guided by Shipmind,
-      the ship's calm, supportive AI.
-    </p>
-    <p>
-      Nexus is currently in demo and playtesting. Nexus clubs are being planned in Oxfordshire through
-      <a href="https://edventures.uk">Edventures</a>. Our other worlds, Envoy, BasketBrain and Testament, are in development.
-    </p>
-  </div>
-
-  <div class="section">
-    <h2>The Simmersion Worlds</h2>
-    <p>Each world explores a different dimension of human capability.</p>
-
-    <ul class="module-list">
-
-      <li>
-        <a href="/nexus/"><strong>Nexus</strong></a>  
-        a living starship simulation that teaches systems thinking, crisis management and collaborative reasoning. 
-        The vessel behaves like an organism, and the world feels immersive, expansive and alive.
-      </li>
-
-      <li>
-        <a href="/envoy/"><strong>Envoy</strong></a>  
-        diplomatic theatre with structured conflict, ceremonial dialogue and high stakes communication. 
-        Every word carries weight, and clarity under pressure becomes a skill you can practise.
-      </li>
-
-      <li>
-        <a href="/basketbrain/"><strong>BasketBrain</strong></a>  
-        a playful economic world where choices shape outcomes.  
-        It explores consumer behaviour, business logic and consequence driven decision making.
-      </li>
-
-      <li>
-        <a href="/testament/"><strong>Testament</strong></a>  
-        a reflective world built around parables.  
-        It focuses on values, motives and meaning through guided narrative exploration.
-      </li>
-
-    </ul>
-  </div>
-
-  <div class="section">
-    <h2>Current Modules (Early Development)</h2>
-    <ul class="module-list">
-      <li>
-        <a href="/nexus/geoeng/solo/forecast/">
-          Nexus: GeoEngineering Forecast Room (Solo)
-        </a>  
-        a space to record forecasts, listen back and build pattern recognition.
-      </li>
-
-      <li>
-        <a href="/nexus/geoeng/solo/forecast/forecast.html">
-          Nexus: GeoEngineering Observation Deck (Prototype)
-        </a>  
-        an early holodeck map where you can explore the environment and run the mission loop.
-      </li>
-
-      <li>Envoy: Communication Scenarios in early development.</li>
-      <li>BasketBrain: Data Engine in production.</li>
-      <li>Testament: Parable Immersion in prototype form.</li>
-    </ul>
-  </div>
-
-  <div class="section">
-    <h2>Who Is It For?</h2>
-    <p>Simmersion works wherever people benefit from structured, low pressure practice.</p>
-    <ul class="module-list">
-      <li><strong>Education:</strong> schools, AP, SEN, tutoring and youth groups</li>
-      <li><strong>Corporate:</strong> onboarding, communication, leadership and risk training</li>
-      <li><strong>Community:</strong> mentoring, youth development and faith formation</li>
-      <li><strong>Individuals:</strong> anyone who thrives with clarity, exploration and predictable learning loops</li>
-    </ul>
-  </div>
-
-  <div class="section">
-    <h2>Why It Matters</h2>
-    <p>
-      Simmersion develops the human skills that matter most.  
-      Communication, adaptability, collaboration, systems thinking and clear decision making.  
-      Every world is designed to be accessible, predictable and emotionally safe, especially for 
-      learners who find traditional methods overwhelming.
-    </p>
-  </div>
-
-  <p class="note">
-    Simmersion is in active development. New worlds, missions and learning pathways are added regularly.
-  </p>
-
-  <footer>
-    Contact: <a href="mailto:ed@edventures.uk">ed@edventures.uk</a><br>
-    © Simmersion Education
-  </footer>
-
+</body>
+</html>
