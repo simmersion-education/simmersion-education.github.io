@@ -4,20 +4,20 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Simmersion Education — Nexus</title>
-  <meta name="description" content="Simmersion Education builds immersive learning worlds. Nexus is the first: a human-facilitated starship simulation where young crews learn maths, physics, teamwork and confidence.">
+  <meta name="description" content="Nexus is a facilitated starship simulation from Simmersion Education. Cadets take part as themselves, in a crew aboard a simulated starship.">
   <style>
     :root {
-      --ink: #16181d;
-      --muted: #4a5160;
+      --ink: #12141a;
+      --muted: #2f3543;
       --paper: #f6f3ec;
       --card: #fffdf8;
-      --line: #d9d3c6;
+      --line: #cfc8b8;
       --navy: #16325c;
-      --navy-dark: #0f2240;
-      --accent: #1b4f8a;
+      --navy-dark: #0c1c36;
+      --accent: #14457a;
       --radius: 14px;
-      --max: 42rem;
-      --wide: 58rem;
+      --max: 44rem;
+      --wide: 62rem;
     }
 
     * { box-sizing: border-box; }
@@ -31,13 +31,13 @@
       font-family: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
       background: var(--paper);
       color: var(--ink);
-      line-height: 1.65;
-      font-size: 1.0625rem;
+      line-height: 1.7;
+      font-size: 1.125rem;
     }
 
     a { color: var(--accent); }
     a:hover { text-decoration-thickness: 2px; }
-    a:focus-visible, button:focus-visible, .button:focus-visible {
+    a:focus-visible, button:focus-visible, .button:focus-visible, summary:focus-visible {
       outline: 3px solid var(--accent);
       outline-offset: 3px;
     }
@@ -45,15 +45,16 @@
     .skip {
       position: absolute;
       left: 1rem;
-      top: -4rem;
+      top: -4.5rem;
       background: #fff;
       color: var(--ink);
       padding: .6rem 1rem;
-      z-index: 10;
+      z-index: 20;
     }
     .skip:focus { top: 1rem; }
 
-    .wrap { width: min(var(--wide), calc(100% - 2.4rem)); margin: 0 auto; }
+
+    .wrap { width: min(var(--wide), calc(100% - 2.2rem)); margin: 0 auto; }
     .narrow { width: min(var(--max), 100%); margin: 0 auto; }
 
     header.site {
@@ -61,7 +62,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 1rem;
-      padding: 1.1rem 0 0;
+      padding: 1.15rem 0 0;
       flex-wrap: wrap;
     }
 
@@ -93,42 +94,43 @@
       margin: 0 2px;
     }
 
-    nav {
+    nav.page {
       display: flex;
       flex-wrap: wrap;
-      gap: .2rem .9rem;
-      font-size: .95rem;
+      gap: .35rem 1rem;
+      font-size: 1rem;
     }
-    nav a {
+    nav.page a {
       color: var(--navy);
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 700;
     }
-    nav a:hover { text-decoration: underline; }
+    nav.page a:hover { text-decoration: underline; }
 
-    .hero { padding: 2.4rem 0 1.5rem; }
+    .hero { padding: 2.5rem 0 1.6rem; }
     .eyebrow {
       margin: 0 0 .6rem;
       text-transform: uppercase;
       letter-spacing: .12em;
-      font-size: .8rem;
-      font-weight: 700;
+      font-size: .82rem;
+      font-weight: 800;
       color: var(--navy);
     }
     h1 {
       margin: 0 0 1rem;
-      font-size: clamp(1.7rem, 4.2vw, 2.45rem);
-      line-height: 1.22;
+      font-size: clamp(1.85rem, 4.4vw, 2.7rem);
+      line-height: 1.18;
       letter-spacing: -.02em;
       color: var(--navy-dark);
-      max-width: 20ch;
+      max-width: 22ch;
     }
-    .hero .lead {
-      margin: 0 0 1.4rem;
-      font-size: 1.15rem;
+    .hero .lead, .lead {
+      margin: 0 0 1.15rem;
+      font-size: 1.2rem;
       color: var(--muted);
-      max-width: 40rem;
+      max-width: 42rem;
     }
+    .hero .lead strong { color: var(--ink); font-weight: 700; }
 
     .video-frame {
       background: #000;
@@ -143,9 +145,9 @@
       aspect-ratio: 16 / 9;
       background: #000;
     }
-    .video-caption {
+    .video-caption, figcaption {
       margin: .7rem 0 0;
-      font-size: .9rem;
+      font-size: 1rem;
       color: var(--muted);
     }
 
@@ -153,13 +155,14 @@
       display: flex;
       flex-wrap: wrap;
       gap: .7rem;
-      margin: 1.3rem 0 0;
+      margin: 1.35rem 0 0;
     }
     .button {
       display: inline-block;
-      padding: .8rem 1.25rem;
+      padding: .85rem 1.3rem;
       border-radius: 999px;
       font-weight: 700;
+      font-size: 1.05rem;
       text-decoration: none;
       border: 2px solid var(--navy);
       line-height: 1.2;
@@ -176,91 +179,166 @@
     .button.secondary:hover { background: #e7e1d5; }
 
     section {
-      padding: 2.4rem 0;
+      padding: 2.6rem 0;
       border-top: 1px solid var(--line);
     }
     h2 {
-      margin: 0 0 .9rem;
-      font-size: 1.55rem;
+      margin: 0 0 1rem;
+      font-size: clamp(1.55rem, 3vw, 2rem);
       line-height: 1.25;
       color: var(--navy-dark);
     }
     h3 {
-      margin: 0 0 .35rem;
-      font-size: 1.05rem;
+      margin: 0 0 .4rem;
+      font-size: 1.15rem;
       color: var(--navy);
     }
     p { margin: 0 0 1rem; }
-    p:last-child, ul:last-child { margin-bottom: 0; }
+    p:last-child, ul:last-child, ol:last-child, .buttons:last-child, figure:last-child { margin-bottom: 0; }
 
-    .skills {
+    .shot {
+      margin: 1.4rem 0 0;
+    }
+    .shot img, .shot picture img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: #111;
+    }
+
+    .cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(15.5rem, 1fr));
-      gap: .9rem;
-      margin: 1.1rem 0 0;
+      grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+      gap: .95rem;
+      margin: 1.2rem 0 0;
       padding: 0;
       list-style: none;
     }
-    .skills li {
+    .cards li, .step, .world, .skills li {
       background: var(--card);
       border: 1px solid var(--line);
       border-radius: 12px;
-      padding: 1rem 1.05rem 1.05rem;
+      padding: 1.15rem 1.15rem 1.2rem;
     }
-    .skills p { color: var(--muted); font-size: .98rem; }
+    .cards p, .step p, .world p, .skills p, .faq-a {
+      color: var(--muted);
+    }
+
+    .steps {
+      display: grid;
+      gap: .85rem;
+      margin: 1.2rem 0 0;
+      padding: 0;
+      list-style: none;
+      counter-reset: step;
+    }
+    .step {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: .9rem 1rem;
+      align-items: start;
+    }
+    .step::before {
+      counter-increment: step;
+      content: counter(step);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.1rem;
+      height: 2.1rem;
+      border-radius: 999px;
+      background: var(--navy);
+      color: #fff;
+      font-weight: 800;
+      font-size: 1.05rem;
+      line-height: 1;
+    }
+    .step h3 { margin-top: .15rem; }
+
+    .callout {
+      margin: 1.2rem 0;
+      padding: 1.1rem 1.2rem;
+      background: var(--navy-dark);
+      color: #fff;
+      border-radius: var(--radius);
+    }
+    .callout p { margin: 0; font-size: 1.2rem; font-weight: 700; line-height: 1.4; }
+
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+      gap: .9rem;
+      margin: 1.2rem 0 0;
+      padding: 0;
+      list-style: none;
+    }
 
     .worlds {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(14.5rem, 1fr));
       gap: .9rem;
-      margin: 1.1rem 0 0;
-    }
-    .world {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 1rem 1.05rem 1.1rem;
+      margin: 1.15rem 0 0;
     }
     .world .status {
       display: inline-block;
-      font-size: .75rem;
-      font-weight: 700;
+      font-size: .78rem;
+      font-weight: 800;
       letter-spacing: .04em;
       text-transform: uppercase;
       color: var(--navy);
       margin-bottom: .4rem;
     }
-    .world h3 { font-size: 1.15rem; }
+    .world h3 { font-size: 1.2rem; }
     .world h3 a { color: inherit; text-decoration: none; }
     .world h3 a:hover { text-decoration: underline; color: var(--accent); }
-    .world p { color: var(--muted); font-size: .98rem; }
 
     .contact-box {
       background: var(--card);
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      padding: 1.2rem 1.3rem;
+      padding: 1.3rem 1.35rem;
     }
     .contact-box a.email {
-      font-weight: 700;
-      font-size: 1.15rem;
+      font-weight: 800;
+      font-size: 1.25rem;
       word-break: break-word;
     }
 
+    .faq { margin: 1.1rem 0 0; }
+    .faq details {
+      border-top: 1px solid var(--line);
+      padding: .85rem 0;
+    }
+    .faq details:last-child { border-bottom: 1px solid var(--line); }
+    .faq summary {
+      cursor: pointer;
+      font-weight: 800;
+      color: var(--navy-dark);
+      font-size: 1.12rem;
+      line-height: 1.4;
+      list-style-position: outside;
+      padding-left: .2rem;
+    }
+    .faq .faq-a { margin: .7rem 0 0.2rem; }
+
     footer {
       border-top: 1px solid var(--line);
-      padding: 1.6rem 0 2.4rem;
+      padding: 1.7rem 0 2.6rem;
       color: var(--muted);
-      font-size: .92rem;
+      font-size: 1rem;
     }
     footer p { margin: 0 0 .45rem; }
-    footer nav { margin-bottom: .8rem; }
+    footer nav { margin-bottom: .85rem; display: flex; flex-wrap: wrap; gap: .3rem 1rem; }
 
     @media (max-width: 640px) {
-      .hero { padding-top: 1.6rem; }
+      body { font-size: 1.125rem; }
+      .hero { padding-top: 1.7rem; }
       h1 { max-width: none; }
       .buttons .button { flex: 1 1 100%; text-align: center; }
-      header.site { padding-top: .9rem; }
+      header.site { padding-top: .95rem; }
+      .step { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -271,12 +349,14 @@
       <a class="logo-block" href="#main" aria-label="Simmersion Education">
         <span class="logo-text">simmersion<span class="dot"></span>education</span>
       </a>
-      <nav aria-label="Page">
+      <nav class="page" aria-label="Page">
         <a href="#nexus">Nexus</a>
-        <a href="#schools">Schools and clubs</a>
-        <a href="#worlds">Worlds</a>
+        <a href="#who">Who it’s for</a>
+        <a href="#session">A session</a>
+        <a href="#learn">What they learn</a>
+        <a href="#pilot">Pilot</a>
         <a href="#about">About</a>
-        <a href="#contact">Contact</a>
+        <a href="#faq">FAQ</a>
       </nav>
     </header>
 
@@ -285,10 +365,12 @@
         <div class="narrow">
           <p class="eyebrow">Simmersion Education</p>
           <h1 id="hero-title">Young crews learn maths, physics, teamwork and confidence aboard a starship.</h1>
-          <p class="lead">Nexus is our first learning world: a human-facilitated mission, supported by a game engine, with the learning built into the work of the crew.</p>
+          <p class="lead"><strong>Nexus is a facilitated starship simulation.</strong> Cadets take part as themselves, working together as the crew.</p>
+          <p class="lead">It is our first learning world: a human-facilitated mission, supported by a game engine, with the learning built into the work of the crew.</p>
         </div>
         <div class="video-frame">
           <video controls playsinline preload="metadata" poster="https://nexusmovie.simmersion.education/poster.jpg" title="Nexus promo film">
+            <source src="https://nexusmovie.simmersion.education/nexus_promo.mp4" type="video/mp4">
             <source src="https://nexusmovie.simmersion.education/nexus_promo_v13.mp4" type="video/mp4">
             Your browser cannot play this video. <a href="https://nexusmovie.simmersion.education/">Watch the promo on its own page</a>.
           </video>
@@ -303,57 +385,142 @@
       <section id="nexus" aria-labelledby="nexus-title">
         <div class="narrow">
           <h2 id="nexus-title">What Nexus is</h2>
-          <p>Nexus is a browser-based starship role-playing game for young people. Crews take on roles, move between the ship’s decks and work together on problems that need careful thinking — a coolant leak, a systems fault, a plan that has to hold under pressure.</p>
+          <p>Nexus is a browser-based starship simulation for young people. Cadets take part as themselves, in a crew aboard a simulated starship — not playing a made-up character. They move between the ship’s decks, take on crew roles, and work together on problems that need careful thinking: a coolant leak, a systems fault, a plan that has to hold under pressure.</p>
           <p>A real person facilitates every session. That facilitator, the Director, helps the crew take part, work through the challenge and reflect on what they discovered. The game engine supports the mission; it does not replace the human guide.</p>
-          <p>Learning sits in the DNA of the game, not as an exercise bolted on afterwards. To steer, aim, repair and decide, players use real ideas from maths and physics, and they have to explain their thinking to one another. Shipmind, the ship’s calm, supportive AI, is there to help — but the crew still has to do the work.</p>
+          <p>Learning sits in the DNA of the work, not as an exercise bolted on afterwards. To steer, aim, repair and decide, cadets use real ideas from maths and physics, and they have to explain their thinking to one another. Shipmind, the ship’s calm, supportive AI, is there to help — but the crew still has to do the work.</p>
+          <p>If you’ve played tabletop RPGs, you’ll recognise some of the elements. Nexus is not role-play: it is a simulation.</p>
           <p>Nexus is currently in demo and playtesting. You can try the demo in a browser today.</p>
         </div>
+        <figure class="shot">
+          <picture>
+            <source type="image/webp" srcset="images/hab-deck.webp">
+            <img src="images/hab-deck.jpg" width="1080" height="607" alt="The habitation deck on Nexus, with crew moving around a circular lounge and nearby rooms." loading="lazy" decoding="async">
+          </picture>
+          <figcaption>Cadets and crew on the habitation deck — one of the places a session can unfold.</figcaption>
+        </figure>
+      </section>
+
+      <section id="who" aria-labelledby="who-title">
+        <div class="narrow">
+          <h2 id="who-title">Who it’s for</h2>
+          <p>Nexus is designed for young people, including SEN learners. A teacher, club leader or family can try a facilitated session and see whether it is a good fit before any wider commitment.</p>
+        </div>
+        <ul class="cards">
+          <li>
+            <h3>Families and home-educators</h3>
+            <p>A shared mission at home, or with a small home-education group, with a real facilitator guiding the crew.</p>
+          </li>
+          <li>
+            <h3>Schools and small SEN groups</h3>
+            <p>A structured session for a class, a small SEN group, alternative provision or tutoring, with a clear role for each learner.</p>
+          </li>
+          <li>
+            <h3>Clubs and youth groups</h3>
+            <p>A crew working together on a mission. Nexus clubs are also being planned in Oxfordshire through <a href="https://edventures.uk/">Edventures</a>.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section id="session" aria-labelledby="session-title">
+        <div class="narrow">
+          <h2 id="session-title">How a session runs</h2>
+          <p>Sessions are facilitated online, in the browser, by a real person. The shape is simple and predictable: a brief, a problem to work through, and a short debrief.</p>
+        </div>
+        <ol class="steps">
+          <li class="step">
+            <div>
+              <h3>The Director sets the scene</h3>
+              <p>A real facilitator briefs the crew and sets the problem — a leak, a garbled message, a hard choice. They can slow, simplify or pause the mission without taking the controls away from the cadets.</p>
+            </div>
+          </li>
+          <li class="step">
+            <div>
+              <h3>Cadets take crew roles on the decks</h3>
+              <p>Each person has a job. Cadets move between decks, use the ship’s tools, and have to talk to one another, because no one runs the ship alone.</p>
+            </div>
+          </li>
+          <li class="step">
+            <div>
+              <h3>The crew investigates and decides</h3>
+              <p>They look at what they can see, weigh options, try a plan and look again. The work is to solve the problem, not to play a part.</p>
+            </div>
+          </li>
+          <li class="step">
+            <div>
+              <h3>A short debrief</h3>
+              <p>The Director helps the crew reflect on what happened, what they noticed, and what they would do next time.</p>
+            </div>
+          </li>
+          <li class="step">
+            <div>
+              <h3>A record that belongs to the cadet</h3>
+              <p>Over time, a cadet can have a progress record of skills and achievements that belongs to them — not only a session that disappears at the end of the day. Facilitators will be able to add notes from the debrief.</p>
+            </div>
+          </li>
+        </ol>
+        <figure class="shot">
+          <picture>
+            <source type="image/webp" srcset="images/flex-deck.webp">
+            <img src="images/flex-deck.jpg" width="1280" height="720" alt="The Flex deck in Nexus, where a cadet is fitted with a logistics suit. Caption on the image: Choose your role. Crew the ship." loading="lazy" decoding="async">
+          </picture>
+          <figcaption>On the Flex deck, a cadet takes a crew role and gets to work.</figcaption>
+        </figure>
+        <div class="narrow" style="margin-top:1.4rem;">
+          <p>Cadet records and facilitator reports are in development, and are not a finished feature of the current demo. The sample below shows the direction of travel: skills learned, achievements, and notes from the Director, held in the cadet’s own record.</p>
+        </div>
+        <figure class="shot">
+          <picture>
+            <source type="image/webp" srcset="images/cadet-record.webp">
+            <img src="images/cadet-record.jpg" width="1400" height="900" alt="A sample Nexus service record for Cadet Robin S, listing qualifications, skills learned, achievements, recent missions and a director’s notes. The footer says ranks are provisional and this is preview data." loading="lazy" decoding="async">
+          </picture>
+          <figcaption>A sample cadet record from a preview build, using made-up progress for “Cadet Robin S”. Skills and achievements are designed to belong to the cadet.</figcaption>
+        </figure>
       </section>
 
       <section id="learn" aria-labelledby="learn-title">
         <div class="narrow">
-          <h2 id="learn-title">What players learn</h2>
-          <p>The mission asks for the same skills a good classroom wants to grow, practised in a setting that feels purposeful.</p>
-          <ul class="skills">
-            <li>
-              <h3>Vectors and matrices</h3>
-              <p>Players work with real vectors and trajectories, and use matrices when they aim and fire. The maths is there because the ship needs it.</p>
-            </li>
-            <li>
-              <h3>Physics you can feel</h3>
-              <p>Flight practice is built on thrust, coast and braking, with physics that behaves as it should, not as a shortcut.</p>
-            </li>
-            <li>
-              <h3>Problem-solving</h3>
-              <p>Crews investigate what they can see, weigh options, try a plan and look again. The loop is observe, act and reflect.</p>
-            </li>
-            <li>
-              <h3>Teamwork and communication</h3>
-              <p>No one runs the ship alone. Players have to share what they notice, listen, and reach a decision as a crew.</p>
-            </li>
-            <li>
-              <h3>Confidence</h3>
-              <p>The setting is structured and supportive, including for SEN learners. Confidence grows from doing the work, not from being told it went well.</p>
-            </li>
-          </ul>
+          <h2 id="learn-title">What children learn</h2>
+          <div class="callout">
+            <p>Problem-solving is the real battle, not fighting people.</p>
+          </div>
+          <p>The mission asks for the same skills a good classroom wants to grow, practised in a setting that feels purposeful. Crews investigate, decide and explain their thinking. The tone is calm and structured.</p>
         </div>
+        <ul class="skills">
+          <li>
+            <h3>Problem-solving</h3>
+            <p>Crews look at what they can see, weigh options, try a plan and look again. The loop is observe, act and reflect.</p>
+          </li>
+          <li>
+            <h3>Teamwork and communication</h3>
+            <p>No one runs the ship alone. Cadets have to share what they notice, listen, and reach a decision as a crew.</p>
+          </li>
+          <li>
+            <h3>Maths and physics that the ship needs</h3>
+            <p>Players work with real vectors and trajectories, and use matrices when they aim and fire. Flight practice is built on thrust, coast and braking, with physics that behaves as it should, not as a shortcut.</p>
+          </li>
+          <li>
+            <h3>Confidence</h3>
+            <p>The setting is structured and supportive, including for SEN learners. Confidence grows from doing the work, not from being told it went well.</p>
+          </li>
+        </ul>
+        <figure class="shot">
+          <picture>
+            <source type="image/webp" srcset="images/flight-practice.webp">
+            <img src="images/flight-practice.jpg" width="1280" height="720" alt="A Nexus flight-practice screen showing a wireframe station, a flight path and physics readouts. Caption on the image: Thrust, coast and brake, with physics that’s real." loading="lazy" decoding="async">
+          </picture>
+          <figcaption>Flight practice uses real thrust, coast and braking — the maths is there because the ship needs it.</figcaption>
+        </figure>
       </section>
 
-      <section id="schools" aria-labelledby="schools-title">
+      <section id="pilot" aria-labelledby="pilot-title">
         <div class="narrow">
-          <h2 id="schools-title">For schools, SEN and clubs</h2>
-          <p>Nexus is designed for young people, including SEN learners, and is a natural fit for schools, alternative provision, tutoring and youth clubs. Sessions are facilitated online, in the browser, by a real person.</p>
+          <h2 id="pilot-title">Register interest in a pilot</h2>
           <p>We are now taking expressions of interest for pilot sessions; dates will be arranged with you. A teacher, club leader or family can try a facilitated session and see whether it is a good fit before any wider commitment.</p>
-          <p>Nexus clubs are also being planned in Oxfordshire through <a href="https://edventures.uk/">Edventures</a>.</p>
           <p>Pilot price, session length, age range and group size are available on request. Registering interest sends an email enquiry to Ed; it does not take a payment or confirm a booking.</p>
-        </div>
-      </section>
-
-      <section id="progress" aria-labelledby="progress-title">
-        <div class="narrow">
-          <h2 id="progress-title">Evidence of progress</h2>
-          <p>Progress in Nexus is meant to be visible, not only felt. Over time, players will have a record of their progression and merits, and facilitators will be able to use session reports. That is one of the ways Nexus is designed to be useful to schools and clubs, not only enjoyable in the moment.</p>
-          <p>Player records and facilitator reports are in development, and are not a finished feature of the current demo.</p>
+          <div class="buttons">
+            <a class="button primary" href="mailto:ed@edventures.uk?subject=Nexus%20pilot%20enquiry">Register interest in a pilot</a>
+            <a class="button secondary" href="https://nexus.simmersion.education/">Play the demo</a>
+          </div>
         </div>
       </section>
 
@@ -366,7 +533,7 @@
           <article class="world">
             <p class="status">Playable demo</p>
             <h3><a href="https://nexus.simmersion.education/">Nexus</a></h3>
-            <p>A living starship simulation. Crews practise systems thinking, problem-solving and collaborative reasoning on a mission together.</p>
+            <p>A facilitated starship simulation. Crews practise systems thinking, problem-solving and collaborative reasoning on a mission together.</p>
           </article>
           <article class="world">
             <p class="status">Coming</p>
@@ -391,6 +558,34 @@
           <h2 id="about-title">About Ed</h2>
           <p>Ed Harnett leads Simmersion Education, and is based in Oxfordshire. He has taught music, science and computer science at secondary school, and tutors a diverse range of students. He holds a Masters in Meteorology and a PGCE.</p>
           <p>He facilitates Nexus sessions himself, helping learners engage with a range of STEM challenges, and grow in confidence. Clubs and tutoring with <a href="https://edventures.uk/">Edventures</a> continue alongside this work.</p>
+        </div>
+      </section>
+
+      <section id="faq" aria-labelledby="faq-title">
+        <div class="narrow">
+          <h2 id="faq-title">Questions people often ask</h2>
+          <div class="faq">
+            <details>
+              <summary>Is this online or in person?</summary>
+              <p class="faq-a">Most sessions are facilitated online, in the browser, by a real person. Nexus clubs are also being planned in person in Oxfordshire through <a href="https://edventures.uk/">Edventures</a>. We can talk through what would work best for your family, school or club.</p>
+            </details>
+            <details>
+              <summary>What age is it for?</summary>
+              <p class="faq-a">Nexus is designed for young people, including SEN learners. Age range, session length and group size are available on request, so we can talk about whether it is a good fit for your group.</p>
+            </details>
+            <details>
+              <summary>How is data looked after?</summary>
+              <p class="faq-a">Cadet accounts are designed to be managed by a parent or guardian, or by a school or organisation for its own cadets. We aim to store only what is needed — typically an email address, the cadet’s name, and any progress the parent or organisation chooses to keep. Information is stored in the UK or EU, is never sold, and is not put into public posts or into AI tools. Guest play can stay on the device being used. Safeguarding for a school or agency session follows the host’s rules, and practical arrangements can be talked through before anything is booked.</p>
+            </details>
+            <details>
+              <summary>Is Nexus a role-playing game?</summary>
+              <p class="faq-a">No. Cadets take part as themselves, in a crew aboard a simulated starship. People who have played tabletop RPGs will recognise some of the elements, but it is not role-play.</p>
+            </details>
+            <details>
+              <summary>How do I register interest, and is there a price on this page?</summary>
+              <p class="faq-a">Email Ed at <a href="mailto:ed@edventures.uk?subject=Nexus%20pilot%20enquiry">ed@edventures.uk</a>. Registering interest does not take a payment or confirm a booking. Pilot price and other details are available on request.</p>
+            </details>
+          </div>
         </div>
       </section>
 
